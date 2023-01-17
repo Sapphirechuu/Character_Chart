@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stats : MonoBehaviour
+public class Stats
 {
-    // Start is called before the first frame update
-    void Start()
+    public static int statMin = 0;
+    public static int statMax = 10;
+
+    private int attackStat;
+
+    public Stats(int attackStackAmount)
     {
-        
+        SetAttackStatAmount(attackStackAmount);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetAttackStatAmount(int attackStatAmount)
     {
-        
+        attackStat = Mathf.Clamp(attackStatAmount, statMin, statMax);
+    }
+
+    public int GetAttackStatAmount()
+    {
+        ;return attackStat;
+    }
+
+    public float GetAttackStatAmountNormalized()
+    {
+        return (float)attackStat / statMax;
     }
 }
